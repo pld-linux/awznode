@@ -53,28 +53,28 @@ install -d $RPM_BUILD_ROOT%{_localstatedir}/ax25/{node,flex} \
 	$RPM_BUILD_ROOT%{_mandir}/man{1,5,8} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
 
-install etc/loggedin   $RPM_BUILD_ROOT%{_localstatedir}/ax25/node
-install etc/lastlog    $RPM_BUILD_ROOT%{_localstatedir}/ax25/node
-install etc/gateways   $RPM_BUILD_ROOT%{_localstatedir}/ax25/flex
+install etc/loggedin	$RPM_BUILD_ROOT%{_localstatedir}/ax25/node
+install etc/lastlog	$RPM_BUILD_ROOT%{_localstatedir}/ax25/node
+install etc/gateways	$RPM_BUILD_ROOT%{_localstatedir}/ax25/flex
 
-install node $RPM_BUILD_ROOT%{_sbindir}
-install nodeusers $RPM_BUILD_ROOT%{_sbindir}
-install flexd $RPM_BUILD_ROOT%{_sbindir}
+install node		$RPM_BUILD_ROOT%{_sbindir}
+install nodeusers	$RPM_BUILD_ROOT%{_sbindir}
+install flexd		$RPM_BUILD_ROOT%{_sbindir}
 
-install etc/help/*.hlp $RPM_BUILD_ROOT%{_libdir}/ax25/node/help
+install etc/help/*.hlp		$RPM_BUILD_ROOT%{_libdir}/ax25/node/help
 
-install etc/node.conf.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
-install etc/node.perms.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
-install etc/node.info.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
-install etc/node.motd.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
-install etc/node.users.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
-install etc/node.routes.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
-install etc/flexd.conf.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.conf.ex	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.perms.ex	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.info.ex	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.motd.ex	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.users.ex	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.routes.ex	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/flexd.conf.ex	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
 
-install man/nodeusers.1  $RPM_BUILD_ROOT%{_mandir}/man1
-install man/node.conf.5  $RPM_BUILD_ROOT%{_mandir}/man5
-install man/node.perms.5 $RPM_BUILD_ROOT%{_mandir}/man5
-install man/node.8       $RPM_BUILD_ROOT%{_mandir}/man8
+install man/nodeusers.1		$RPM_BUILD_ROOT%{_mandir}/man1
+install man/node.conf.5		$RPM_BUILD_ROOT%{_mandir}/man5
+install man/node.perms.5	$RPM_BUILD_ROOT%{_mandir}/man5
+install man/node.8		$RPM_BUILD_ROOT%{_mandir}/man8
 
 %clean
 rm -rf $RPM_BUILD_ROOT
