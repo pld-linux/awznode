@@ -1,0 +1,92 @@
+*** configure	Fri Feb 18 10:42:07 2000
+--- configure.new	Thu Oct 11 13:01:21 2001
+***************
+*** 4,69 ****
+  SBIN_DIR=/usr/sbin
+  BIN_DIR=/usr/bin
+  LIB_DIR=/usr/lib
+! MAN_DIR=/usr/man
+  VAR_DIR=/var/ax25
+  
+! echo -n "Your machine architecture is ... "
+! ARCH=`uname -m`
+  echo $ARCH
+  
+- echo -n "Checking for the existence of the Zlib headers... "
+- ZLIB=""
+- HAVEZLIB="#undef"
+- for zlibdir in /usr/include /usr/local/include
+- do
+- 	if [ -f $zlibdir/zlib.h ]
+- 	then
+- 		echo $zlibdir/zlib.h
+  		ZLIB="-lz"
+  		HAVEZLIB="#define"
+- 	fi
+- done
+- if [ -z "$ZLIB" ]
+- then
+- 	echo "not found."
+- 	echo "            Without Zlib Node will lack compression support"
+- 	echo "            See INSTALL for more information."
+- 	echo
+- fi
+- 
+- # Global protocol definition symbols for programmers that want to conditionally
+- # compile
+- 	HAVEAX25="#undef"
+- 	HAVENETROM="#undef"
+- 	HAVEROSE="#undef"
+- 	HAVEMHEARD="#undef"
+- 
+- 	echo -n "Include support for the AX.25 protocol ? [Y/n]: "; read answer
+- 	if [ "$answer" = "Y" -o "$answer" = "y" -o "$answer" = "" ]
+- 	then
+  		HAVEAX25="#define"
+- 	fi
+- 	#
+- 	echo -n "Include support for the NetRom protocol ? [Y/n]: "; read answer
+- 	if [ "$answer" = "Y" -o "$answer" = "y" -o "$answer" = "" ]
+- 	then
+  		HAVEAX25="#define"
+  		HAVENETROM="#define"
+- 	fi
+- 	#
+- 	echo -n "Include support for the Rose protocol ? [Y/n]: "; read answer
+- 	if [ "$answer" = "Y" -o "$answer" = "y" -o "$answer" = "" ]
+- 	then
+  		HAVEAX25="#define"
+  		HAVEROSE="#define"
+- 	fi
+- 	#
+- 	echo -n "Include support for MHeard ports listen ? [Y/n]: "; read answer
+- 	if [ "$answer" = "Y" -o "$answer" = "y" -o "$answer" = "" ]
+- 	then
+  		HAVEAX25="#define"
+  		HAVEMHEARD="#define"
+- 	fi
+  
+  echo "Creating Makefile.include"
+  
+--- 4,24 ----
+  SBIN_DIR=/usr/sbin
+  BIN_DIR=/usr/bin
+  LIB_DIR=/usr/lib
+! MAN_DIR=/usr/share/man
+  VAR_DIR=/var/ax25
+  
+! echo -n "Your arch : " 
+  echo $ARCH
+  
+  		ZLIB="-lz"
+  		HAVEZLIB="#define"
+  		HAVEAX25="#define"
+  		HAVEAX25="#define"
+  		HAVENETROM="#define"
+  		HAVEAX25="#define"
+  		HAVEROSE="#define"
+  		HAVEAX25="#define"
+  		HAVEMHEARD="#define"
+  
+  echo "Creating Makefile.include"
+  
