@@ -37,8 +37,8 @@ install -d $RPM_BUILD_ROOT/var/ax25/{node,flex} \
 	$RPM_BUILD_ROOT%{_mandir}/man{1,5,8} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
 
-install etc/loggedin   $RPM_BUILD_ROOT/var/ax25/node       
-install etc/lastlog    $RPM_BUILD_ROOT/var/ax25/node       
+install etc/loggedin   $RPM_BUILD_ROOT/var/ax25/node
+install etc/lastlog    $RPM_BUILD_ROOT/var/ax25/node
 install etc/gateways   $RPM_BUILD_ROOT/var/ax25/flex
 
 install node $RPM_BUILD_ROOT%{_sbindir}
