@@ -5,6 +5,7 @@ Release: 1
 License: GNU
 Group: Applications/Communications
 Group(pl): Aplikacje/Komunikacja
+Group(de): Applikationen/Kommunikation
 Source0: ftp://ftp.icm.edu.pl/vol/rzm0/ham/unix/Linux/packet/awznode/awznode-v0.4-pre2.tar.gz
 Patch0: http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-configure.patch
 BuildRoot: /tmp/%{name}-%{version}-root
@@ -13,7 +14,6 @@ BuildRequires: libax25-devel
 Requires: zlib >= 1.1.3
 Requires: libax25 >= 0.0.9
 Requires: ax25-tools >= 0.0.8
-ExclusiveArch: i686
 
 %description
 
@@ -24,14 +24,14 @@ Easy node/gateway software for AX25
 Prosty przekaznik/gateway dla AX25
 
 %prep
-    %setup -q -n awznode-v0.4-pre2
+%setup -q -n awznode-v0.4-pre2
 
 %patch0 -p0
 
 %build
 
 %configure2_13
-make
+%{__make} CC="gcc %{rpmcflags} -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -87,7 +87,11 @@ rm -rf $RPM_BUILD_ROOT
 All persons listed below can be reached at <cvs_login>@pld.org.pl               
                                                                                 
 $Log: awznode.spec,v $
-Revision 1.3  2001-10-23 18:15:44  djrzulf
+Revision 1.4  2001-10-24 21:18:33  djrzulf
+- don't need extra configure, parms for arch done by
+  %{__make} CC="gcc %{rpmcflags} -Wall", i think it's enough
+
+Revision 1.3  2001/10/23 18:15:44  djrzulf
 - created spec for PLD
 - sticky arch becouse it has very poor ./configure - if someone can - please
   rewrite ./configure script of awznode, becouse it can't build for other
