@@ -1,0 +1,94 @@
+diff -Nur awznode-v0.4-pre2.orig/configure awznode-v0.4-pre2/configure
+--- awznode-v0.4-pre2.orig/configure	Fri Nov 28 12:40:48 2003
++++ awznode-v0.4-pre2/configure	Fri Nov 28 12:41:33 2003
+@@ -5,7 +5,7 @@
+ BIN_DIR=/usr/bin
+ LIB_DIR=/usr/lib
+ MAN_DIR=/usr/share/man
+-VAR_DIR=/var/ax25
++VAR_DIR=/var/lib/ax25
+ 
+ echo -n "Your arch : " 
+ echo $ARCH
+diff -Nur awznode-v0.4-pre2.orig/flexd.c awznode-v0.4-pre2/flexd.c
+--- awznode-v0.4-pre2.orig/flexd.c	Sat Jan  8 10:31:58 2000
++++ awznode-v0.4-pre2/flexd.c	Fri Nov 28 12:41:17 2003
+@@ -23,7 +23,7 @@
+ #define DEFAULT_POLL_TIME 600
+ #define MINIMUM_POLL_TIME 300
+ #define FLEXD_CONF_FILE "/etc/ax25/flexd.conf"
+-#define FLEXD_TEMP_PATH "/var/ax25/flex/"
++#define FLEXD_TEMP_PATH "/var/lib/ax25/flex/"
+ 
+ int poll_time=DEFAULT_POLL_TIME;
+ char flexgate[10]="\0";
+diff -Nur awznode-v0.4-pre2.orig/man/node.8 awznode-v0.4-pre2/man/node.8
+--- awznode-v0.4-pre2.orig/man/node.8	Tue Apr 28 18:07:17 1998
++++ awznode-v0.4-pre2/man/node.8	Fri Nov 28 12:43:11 2003
+@@ -226,11 +226,11 @@
+ This file should be edited to reflect the local configuration.
+ .br
+ .TP 5 
+-.B /var/ax25/node/loggedin
++.B /var/lib/ax25/node/loggedin
+ Database of current users.
+ .br
+ .TP 5
+-.B /var/ax25/mheard/mheard.dat
++.B /var/lib/ax25/mheard/mheard.dat
+ Information about AX.25 stations heard.
+ .br
+ .TP 5 
+diff -Nur awznode-v0.4-pre2.orig/man/nodeusers.1 awznode-v0.4-pre2/man/nodeusers.1
+--- awznode-v0.4-pre2.orig/man/nodeusers.1	Tue Apr 28 18:30:24 1998
++++ awznode-v0.4-pre2/man/nodeusers.1	Fri Nov 28 12:43:16 2003
+@@ -24,7 +24,7 @@
+ .SH FILES
+ .LP
+ .TP 5
+-.B /var/ax25/node/loggedin
++.B /var/lib/ax25/node/loggedin
+ Database of current users.
+ .SH "SEE ALSO"
+ .BR node (8)
+diff -Nur awznode-v0.4-pre2.orig/procinfo.h awznode-v0.4-pre2/procinfo.h
+--- awznode-v0.4-pre2.orig/procinfo.h	Thu Jan  6 16:30:23 2000
++++ awznode-v0.4-pre2/procinfo.h	Fri Nov 28 12:42:27 2003
+@@ -4,13 +4,13 @@
+ #define PROC_NR_FILE  "/proc/net/nr"
+ #define PROC_DEV_FILE "/proc/net/dev"
+ 
+-#define FLEX_GT_FILE  "/var/ax25/flex/gateways"
+-#define FLEX_DST_FILE "/var/ax25/flex/destinations"
++#define FLEX_GT_FILE  "/var/lib/ax25/flex/gateways"
++#define FLEX_DST_FILE "/var/lib/ax25/flex/destinations"
+ 
+ #define AX_ROUTES_FILE "/etc/ax25/node.routes"
+ 
+ #ifndef DATA_MHEARD_FILE
+-#define DATA_MHEARD_FILE "/var/ax25/mheard/mheard.dat"
++#define DATA_MHEARD_FILE "/var/lib/ax25/mheard/mheard.dat"
+ #endif
+ 
+ #define CONN_TYPE_DIRECT 'D'
+diff -Nur awznode-v0.4-pre2.orig/system.c awznode-v0.4-pre2/system.c
+--- awznode-v0.4-pre2.orig/system.c	Wed Jan  5 15:13:24 2000
++++ awznode-v0.4-pre2/system.c	Fri Nov 28 12:42:57 2003
+@@ -31,7 +31,7 @@
+ 
+ #include "node.h"
+ 
+-#define DATA_NODE_LAST_FILE "/var/ax25/node/lastlog"
++#define DATA_NODE_LAST_FILE "/var/lib/ax25/node/lastlog"
+ #define CONF_USERS_FILE "/etc/ax25/node.users"
+ #define USER_NOBODY "nobody"
+ 
+@@ -349,7 +349,7 @@
+     return 1;
+   }
+ 
+-  strcpy(mbox, "MAIL=/var/spool/mail/");
++  strcpy(mbox, "MAIL=/var/mail/");
+   strcat(mbox, pw->pw_name);
+ 
+   envp[0]="EDITOR=/bin/red";
