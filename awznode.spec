@@ -1,9 +1,9 @@
 Summary:	Easy configurable node/gateway (AX25)
-Summary(pl):	Prosto konfigurowalny przekaznik/brama (AX25)
+Summary(pl):	Prosto konfigurowalny przeka¼nik/brama (AX25)
 Name:		awznode
 Version:	v0.4pre2
 Release:	1
-License:	GNU
+License:	GPL
 Group:		Applications/Communications
 Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
@@ -18,11 +18,11 @@ Requires:	ax25-tools >= 0.0.8
 
 %description
 Easy node/gateway software for AX25 procotole. It's usable tool if you
-want create gateway packetradio <> internet (both sides).
+want create gateway packetradio <> Internet (both sides).
 
 %description -l pl
-Prosty przekaznik/brama dla protokolu AX25. Przydatne narzedzie przy
-budowaniu bramek packetradio <> internet.
+Prosty przeka¼nik/brama dla protoko³u AX25. Przydatne narzêdzie przy
+budowaniu bramek packetradio <> Internet.
 
 %prep
 %setup -q -n awznode-v0.4-pre2
@@ -34,15 +34,10 @@ budowaniu bramek packetradio <> internet.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/var/ax25/node
-install -d $RPM_BUILD_ROOT/var/ax25/flex
-install -d $RPM_BUILD_ROOT%{_sbindir}
-install -d $RPM_BUILD_ROOT%{_bindir}
-install -d $RPM_BUILD_ROOT%{_libdir}/ax25/node/help
-install -d $RPM_BUILD_ROOT%{_mandir}/man1
-install -d $RPM_BUILD_ROOT%{_mandir}/man5
-install -d $RPM_BUILD_ROOT%{_mandir}/man8
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install -d $RPM_BUILD_ROOT/var/ax25/{node,flex} \
+	$RPM_BUILD_ROOT{%{_sbindir},%{_bindir},%{_libdir}/ax25/node/help} \
+	$RPM_BUILD_ROOT%{_mandir}/man{1,5,8} \
+	$RPM_BUILD_ROOT%{_sysconfdir}/ax25
 
 install etc/loggedin   $RPM_BUILD_ROOT/var/ax25/node       
 install etc/lastlog    $RPM_BUILD_ROOT/var/ax25/node       
@@ -67,16 +62,17 @@ install man/node.conf.5  $RPM_BUILD_ROOT%{_mandir}/man5
 install man/node.perms.5 $RPM_BUILD_ROOT%{_mandir}/man5
 install man/node.8       $RPM_BUILD_ROOT%{_mandir}/man8
 
+gzip -9nf CHANGES README
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_sbindir}/nodeusers
-%attr(755,root,root)%{_sbindir}/flexd
-%attr(4775,root,root)%{_sbindir}/node
-%attr(600,root,root)%{_sysconfdir}/ax25/*
+%doc CHANGES.gz README.gz
+%attr(755,root,root) %{_sbindir}/nodeusers
+%attr(755,root,root) %{_sbindir}/flexd
+%attr(4775,root,root) %{_sbindir}/node
+%attr(600,root,root) %{_sysconfdir}/ax25/*
 %{_mandir}/man?/*
 /var/ax25/*
-
-%doc CHANGES COPYING INSTALL README
