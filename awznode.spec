@@ -10,6 +10,7 @@ Release:	3%{?_with_non_hams:nonhams}
 License:	GPL
 Group:		Applications/Communications
 Source0:	ftp://ftp.icm.edu.pl/vol/rzm0/ham/unix/Linux/packet/awznode/%{name}-v0.4-pre2.tar.gz
+# Source0-md5:	02f26da4c4db0260c297e1cac6c9d1f5
 Patch0:		%{name}-configure.patch
 %{?_with_non_hams:Patch1:awznode-non_hams.patch}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
