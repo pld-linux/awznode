@@ -11,7 +11,7 @@ Release:	0.%{_pre}%{?_with_non_hams:nonhams}
 Epoch:		1
 License:	GPL
 Group:		Applications/Communications
-Source0:	ftp://ftp.icm.edu.pl/vol/rzm0/ham/unix/Linux/packet/awznode/%{name}-v%{version}-%{_pre}.tar.gz
+Source0:	ftp://ftp.funet.fi/pub/ham/unix/Linux/packet/awznode/%{name}-v%{version}-%{_pre}.tar.gz
 # Source0-md5:	02f26da4c4db0260c297e1cac6c9d1f5
 Patch0:		%{name}-configure.patch
 Patch1:		awznode-non_hams.patch
@@ -37,7 +37,8 @@ budowaniu bramek packetradio <> Internet.
 
 %build
 %configure
-%{__make} CC="%{__cc} %{rpmcflags} -Wall"
+%{__make} \
+	CC="%{__cc} %{rpmcflags} -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
