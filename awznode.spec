@@ -1,12 +1,17 @@
+#
+# Conditional build:
+# _with_non_hams - allow to connect non hams stations
+#
 Summary:	Easy configurable node/gateway (AX25)
 Summary(pl):	Prosto konfigurowalny przeka¼nik/brama (AX25)
 Name:		awznode
 Version:	v0.4pre2
-Release:	2
+Release:	3%{?_with_non_hams:nonhams}
 License:	GPL
 Group:		Applications/Communications
 Source0:	ftp://ftp.icm.edu.pl/vol/rzm0/ham/unix/Linux/packet/awznode/%{name}-v0.4-pre2.tar.gz
-Patch0:		http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-configure.patch
+Patch0:		%{name}-configure.patch
+%{?_with_non_hams:Patch1:awznode-non_hams.patch}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
 BuildRequires:	libax25-devel
@@ -25,6 +30,7 @@ budowaniu bramek packetradio <> Internet.
 %prep
 %setup -q -n awznode-v0.4-pre2
 %patch0 -p0
+%{?_with_non_hams:%patch1 -p1}
 
 %build
 %configure2_13
