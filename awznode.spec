@@ -1,4 +1,5 @@
-Summary: ax25 libraries for hamradio applications.
+Summary: Easy configurable node/gateway (AX25).
+Summary(pl): Prosto konfigurowalny przekaznik/brama (AX25).
 Name: awznode
 Version: v0.4pre2
 Release: 1
@@ -17,11 +18,13 @@ Requires: ax25-tools >= 0.0.8
 
 %description
 
-Easy node/gateway software for AX25
+Easy node/gateway software for AX25 procotole. It's usable tool if you want
+create gateway packetradio <> internet (both sides).
 
 %description -l pl
 
-Prosty przekaznik/gateway dla AX25
+Prosty przekaznik/brama dla protokolu AX25. Przydatne narzedzie przy budowaniu
+bramek packetradio <> internet.
 
 %prep
 %setup -q -n awznode-v0.4-pre2
@@ -87,7 +90,10 @@ rm -rf $RPM_BUILD_ROOT
 All persons listed below can be reached at <cvs_login>@pld.org.pl               
                                                                                 
 $Log: awznode.spec,v $
-Revision 1.4  2001-10-24 21:18:33  djrzulf
+Revision 1.5  2001-10-26 21:25:56  djrzulf
+- corrected Summary and Description texts
+
+Revision 1.4  2001/10/24 21:18:33  djrzulf
 - don't need extra configure, parms for arch done by
   %{__make} CC="gcc %{rpmcflags} -Wall", i think it's enough
 
