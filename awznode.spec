@@ -2,7 +2,7 @@ Summary:	Easy configurable node/gateway (AX25)
 Summary(pl):	Prosto konfigurowalny przeka¼nik/brama (AX25)
 Name:		awznode
 Version:	v0.4pre2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Communications
 Source0:	ftp://ftp.icm.edu.pl/vol/rzm0/ham/unix/Linux/packet/awznode/%{name}-v0.4-pre2.tar.gz
