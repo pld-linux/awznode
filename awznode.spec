@@ -60,14 +60,12 @@ install man/node.conf.5  $RPM_BUILD_ROOT%{_mandir}/man5
 install man/node.perms.5 $RPM_BUILD_ROOT%{_mandir}/man5
 install man/node.8       $RPM_BUILD_ROOT%{_mandir}/man8
 
-gzip -9nf CHANGES README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.gz README.gz
+%doc CHANGES README
 %attr(755,root,root) %{_sbindir}/nodeusers
 %attr(755,root,root) %{_sbindir}/flexd
 %attr(4775,root,root) %{_sbindir}/node
