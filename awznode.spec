@@ -36,7 +36,7 @@ budowaniu bramek packetradio <> Internet.
 %{?_with_non_hams:%patch1 -p1}
 
 %build
-%configure2_13
+%configure
 %{__make} CC="%{__cc} %{rpmcflags} -Wall"
 
 %install
