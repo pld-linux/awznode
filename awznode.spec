@@ -1,104 +1,82 @@
-Summary: Easy configurable node/gateway (AX25).
-Summary(pl): Prosto konfigurowalny przekaznik/brama (AX25).
-Name: awznode
-Version: v0.4pre2
-Release: 1
-License: GNU
-Group: Applications/Communications
-Group(pl): Aplikacje/Komunikacja
-Group(de): Applikationen/Kommunikation
-Source0: ftp://ftp.icm.edu.pl/vol/rzm0/ham/unix/Linux/packet/awznode/awznode-v0.4-pre2.tar.gz
-Patch0: http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-configure.patch
-BuildRoot: /tmp/%{name}-%{version}-root
-BuildRequires: zlib-devel
-BuildRequires: libax25-devel
-Requires: zlib >= 1.1.3
-Requires: libax25 >= 0.0.9
-Requires: ax25-tools >= 0.0.8
+Summary:	Easy configurable node/gateway (AX25)
+Summary(pl):	Prosto konfigurowalny przekaznik/brama (AX25)
+Name:		awznode
+Version:	v0.4pre2
+Release:	1
+License:	GNU
+Group:		Applications/Communications
+Group(de):	Applikationen/Kommunikation
+Group(pl):	Aplikacje/Komunikacja
+Source0:	ftp://ftp.icm.edu.pl/vol/rzm0/ham/unix/Linux/packet/awznode/%{name}-v0.4-pre2.tar.gz
+Patch0:		http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-configure.patch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	zlib-devel
+BuildRequires:	libax25-devel
+Requires:	zlib >= 1.1.3
+Requires:	libax25 >= 0.0.9
+Requires:	ax25-tools >= 0.0.8
 
 %description
-
-Easy node/gateway software for AX25 procotole. It's usable tool if you want
-create gateway packetradio <> internet (both sides).
+Easy node/gateway software for AX25 procotole. It's usable tool if you
+want create gateway packetradio <> internet (both sides).
 
 %description -l pl
-
-Prosty przekaznik/brama dla protokolu AX25. Przydatne narzedzie przy budowaniu
-bramek packetradio <> internet.
+Prosty przekaznik/brama dla protokolu AX25. Przydatne narzedzie przy
+budowaniu bramek packetradio <> internet.
 
 %prep
 %setup -q -n awznode-v0.4-pre2
-
 %patch0 -p0
 
 %build
-
 %configure2_13
-%{__make} CC="gcc %{rpmcflags} -Wall"
+%{__make} CC="%{__cc} %{rpmcflags} -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p ${RPM_BUILD_ROOT}/var/ax25/node
-mkdir -p ${RPM_BUILD_ROOT}/var/ax25/flex
-mkdir -p ${RPM_BUILD_ROOT}/usr/sbin
-mkdir -p ${RPM_BUILD_ROOT}/usr/bin
-mkdir -p ${RPM_BUILD_ROOT}/usr/lib/ax25/node/help
-mkdir -p ${RPM_BUILD_ROOT}/usr/share/man/man1
-mkdir -p ${RPM_BUILD_ROOT}/usr/share/man/man5
-mkdir -p ${RPM_BUILD_ROOT}/usr/share/man/man8
-mkdir -p ${RPM_BUILD_ROOT}/etc/ax25
+install -d $RPM_BUILD_ROOT/var/ax25/node
+install -d $RPM_BUILD_ROOT/var/ax25/flex
+install -d $RPM_BUILD_ROOT%{_sbindir}
+install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT%{_libdir}/ax25/node/help
+install -d $RPM_BUILD_ROOT%{_mandir}/man1
+install -d $RPM_BUILD_ROOT%{_mandir}/man5
+install -d $RPM_BUILD_ROOT%{_mandir}/man8
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/ax25
 
-install etc/loggedin   ${RPM_BUILD_ROOT}/var/ax25/node       
-install etc/lastlog    ${RPM_BUILD_ROOT}/var/ax25/node       
-install etc/gateways   ${RPM_BUILD_ROOT}/var/ax25/flex
+install etc/loggedin   $RPM_BUILD_ROOT/var/ax25/node       
+install etc/lastlog    $RPM_BUILD_ROOT/var/ax25/node       
+install etc/gateways   $RPM_BUILD_ROOT/var/ax25/flex
 
-install node          ${RPM_BUILD_ROOT}/usr/sbin
-install nodeusers     ${RPM_BUILD_ROOT}/usr/sbin
-install flexd         ${RPM_BUILD_ROOT}/usr/sbin
+install node $RPM_BUILD_ROOT%{_sbindir}
+install nodeusers $RPM_BUILD_ROOT%{_sbindir}
+install flexd $RPM_BUILD_ROOT%{_sbindir}
 
-install etc/help/*.hlp ${RPM_BUILD_ROOT}/usr/lib/ax25/node/help
+install etc/help/*.hlp $RPM_BUILD_ROOT%{_libdir}/ax25/node/help
 
-install etc/node.conf.ex ${RPM_BUILD_ROOT}/etc/ax25
-install etc/node.perms.ex ${RPM_BUILD_ROOT}/etc/ax25
-install etc/node.info.ex ${RPM_BUILD_ROOT}/etc/ax25
-install etc/node.motd.ex ${RPM_BUILD_ROOT}/etc/ax25
-install etc/node.users.ex ${RPM_BUILD_ROOT}/etc/ax25
-install etc/node.routes.ex ${RPM_BUILD_ROOT}/etc/ax25
-install etc/flexd.conf.ex ${RPM_BUILD_ROOT}/etc/ax25
+install etc/node.conf.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.perms.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.info.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.motd.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.users.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/node.routes.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
+install etc/flexd.conf.ex $RPM_BUILD_ROOT%{_sysconfdir}/ax25
 
-install man/nodeusers.1  ${RPM_BUILD_ROOT}/usr/share/man/man1
-install man/node.conf.5  ${RPM_BUILD_ROOT}/usr/share/man/man5
-install man/node.perms.5 ${RPM_BUILD_ROOT}/usr/share/man/man5
-install man/node.8       ${RPM_BUILD_ROOT}/usr/share/man/man8
+install man/nodeusers.1  $RPM_BUILD_ROOT%{_mandir}/man1
+install man/node.conf.5  $RPM_BUILD_ROOT%{_mandir}/man5
+install man/node.perms.5 $RPM_BUILD_ROOT%{_mandir}/man5
+install man/node.8       $RPM_BUILD_ROOT%{_mandir}/man8
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root)/usr/sbin/nodeusers
-%attr(755,root,root)/usr/sbin/flexd
-%attr(4775,root,root)/usr/sbin/node
-%attr(600,root,root)/etc/ax25/*
-/usr/share/man/*
+%attr(755,root,root)%{_sbindir}/nodeusers
+%attr(755,root,root)%{_sbindir}/flexd
+%attr(4775,root,root)%{_sbindir}/node
+%attr(600,root,root)%{_sysconfdir}/ax25/*
+%{_mandir}/man?/*
 /var/ax25/*
 
 %doc CHANGES COPYING INSTALL README
-
-%changelog                                                                      
-* %{date} PLD Team <pld-list@pld.org.pl>                                        
-All persons listed below can be reached at <cvs_login>@pld.org.pl               
-                                                                                
-$Log: awznode.spec,v $
-Revision 1.5  2001-10-26 21:25:56  djrzulf
-- corrected Summary and Description texts
-
-Revision 1.4  2001/10/24 21:18:33  djrzulf
-- don't need extra configure, parms for arch done by
-  %{__make} CC="gcc %{rpmcflags} -Wall", i think it's enough
-
-Revision 1.3  2001/10/23 18:15:44  djrzulf
-- created spec for PLD
-- sticky arch becouse it has very poor ./configure - if someone can - please
-  rewrite ./configure script of awznode, becouse it can't build for other
-  arch than builder is installed on
