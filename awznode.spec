@@ -5,8 +5,6 @@ Version:	v0.4pre2
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Group(de):	Applikationen/Kommunikation
-Group(pl):	Aplikacje/Komunikacja
 Source0:	ftp://ftp.icm.edu.pl/vol/rzm0/ham/unix/Linux/packet/awznode/%{name}-v0.4-pre2.tar.gz
 Patch0:		http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-configure.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
