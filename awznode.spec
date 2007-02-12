@@ -3,7 +3,7 @@
 %bcond_with	non_hams	# allow to connect non hams stations
 #
 Summary:	Easy configurable node/gateway (AX25)
-Summary(pl):	Prosto konfigurowalny przekaºnik/brama (AX25)
+Summary(pl.UTF-8):   Prosto konfigurowalny przeka≈∫nik/brama (AX25)
 Name:		awznode
 %define		_pre	pre2
 Version:	0.4
@@ -29,8 +29,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Easy node/gateway software for AX25 procotole. It's usable tool if you
 want create gateway packetradio <> Internet (both sides).
 
-%description -l pl
-Prosty przekaºnik/brama dla protoko≥u AX25. Przydatne narzÍdzie przy
+%description -l pl.UTF-8
+Prosty przeka≈∫nik/brama dla protoko≈Çu AX25. Przydatne narzƒôdzie przy
 budowaniu bramek packetradio <> Internet.
 
 %prep
