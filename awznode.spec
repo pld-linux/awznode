@@ -3,7 +3,7 @@
 %bcond_with	non_hams	# allow to connect non hams stations
 #
 Summary:	Easy configurable node/gateway (AX25)
-Summary(pl.UTF-8):   Prosto konfigurowalny przekaźnik/brama (AX25)
+Summary(pl.UTF-8):	Prosto konfigurowalny przekaźnik/brama (AX25)
 Name:		awznode
 %define		_pre	pre2
 Version:	0.4
