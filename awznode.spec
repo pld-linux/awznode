@@ -35,8 +35,8 @@ budowaniu bramek packetradio <> Internet.
 
 %prep
 %setup -q -n %{name}-v%{version}-%{_pre}
-%patch0 -p0
-%patch1 -p1
+%patch -P0 -p0
+%patch -P1 -p1
 %{?with_non_hams:%patch2 -p1}
 
 %build
